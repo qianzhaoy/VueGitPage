@@ -82,3 +82,6 @@ li.el-menu-item{
 .hide {
     display: none
 }
+.content{
+  margin-top: 40px;
+}

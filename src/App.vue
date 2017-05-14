@@ -22,7 +22,7 @@
 
 <el-row>
   <el-col :span="20" :offset="2">
-    <router-view></router-view>    
+    <router-view class="content"></router-view>    
   </el-col>
 </el-row>
 <!--    <router-view></router-view>-->
@@ -42,11 +42,4 @@
 </script>
 
 <style src="./assets/css/reset.css">
-  
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
 </style>
