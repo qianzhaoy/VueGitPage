@@ -53,10 +53,6 @@
 				}
 			}, false)
 			
-			document.addEventListener('dblclick', function(e) {
-				isMove = false
-			}, false)
-
 			document.addEventListener('mousemove', self.throttle(function(e) {
 				if (!isMove) return;
 				const clientX = e.clientX
@@ -68,6 +64,10 @@
 					opacity
 				});
 			}, 30), false)
+			
+			document.addEventListener('dblclick', function(e) {
+				isMove = false
+			}, false)
 
 			function arcPush(client) {
 				arcCache.push(client);

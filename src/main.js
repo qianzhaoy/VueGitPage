@@ -6,6 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import "./assets/css/reset.css";
+import "animate.css";
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false

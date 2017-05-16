@@ -9,21 +9,13 @@
     <el-menu-item index="skill">xxx</el-menu-item>
     <el-menu-item index="production">xxxx</el-menu-item>
     <el-menu-item index="connection">xxxx</el-menu-item>
-<!--
-    <el-submenu index="2">
-      <template slot="title">关于我</template>
-<el-menu-item index="2-1">选项1</el-menu-item>
-<el-menu-item index="2-2">选项2</el-menu-item>
-<el-menu-item index="2-3">选项3</el-menu-item>
-</el-submenu>
--->
 </el-menu>
 </el-col>
 </el-row>
 
 <el-row>
 	<el-col :span="20" :offset="2">
-		<router-view class="content"></router-view>
+			<router-view class="content"></router-view>
 	</el-col>
 </el-row>
 <!--    <router-view></router-view>-->
@@ -32,7 +24,7 @@
 
 <script>
 	import ArcCanvas from '@/components/arcCanvas'
-	
+
 	export default {
 		name: 'app',
 		data() {
@@ -40,7 +32,7 @@
 				activeIndex: "/"
 			}
 		},
-		components:{
+		components: {
 			ArcCanvas
 		}
 	}
