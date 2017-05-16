@@ -37,7 +37,7 @@
 		name: 'app',
 		data() {
 			return {
-				activeIndex: "1"
+				activeIndex: "/"
 			}
 		},
 		components:{
