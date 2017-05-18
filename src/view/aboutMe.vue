@@ -1,5 +1,10 @@
 <template>
-    <div>这里是关于我</div>
+   <el-row id="aboutMe">
+   		<el-col :span="20" :offset="2">
+   		
+   		sdsd
+   		</el-col>
+   </el-row>
 </template>
 
 <script>
@@ -13,6 +18,6 @@
     }
 </script>
 
-<style>
-    
+<style lang="less" scoped>
+	
 </style>

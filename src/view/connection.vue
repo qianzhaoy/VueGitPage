@@ -1,5 +1,9 @@
 <template>
-    <div>联系我吧</div>
+	<el-row id="aboutMe">
+   		<el-col :span="20" :offset="2">
+   			sdsd
+   		</el-col>
+   </el-row>
 </template>
 
 <script>
