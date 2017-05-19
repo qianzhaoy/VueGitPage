@@ -1,0 +1,8 @@
+{
+	"javascript":["不能说精通原生", "但也在原生JS上,下了一点苦工, 也拜读过几本书如:", "<<javascript高级程序设计>>", "<<javascript设计模式>>", "<<编写可维护的JavaScript>>", "<<JavaScript语言精粹>>", "<<ECMAScript 6入门>>", "<<nodeJs实战>>", "当时看原型链,原型继承等等的时候,脑子都绕弯了.", "后来感觉写不出很优雅的JS, 买了一本JS设计模式想学习一下.", "开始学习Vue后,用上了Vue全家桶,又去学习了ES6和webpack, 买了纸质书.", "半路出家, 没接受过高深的计算机原理, ","始终感觉无法写出优雅的JS代码, 一直是十八流水平,","但也以此为目标努力着."],
+	"html":["没什么太大问题", "canvas", "视频", "drag", "sessionStorage", "localStorage", "FormData", "都会拿出来用用,","基本是熟练掌握" ],
+	"css":["常用的:", "font-family", "transform", "transition", "animation", "flexbox, @media", "border-radius", "也是没什么太大问题的掌握"],
+	"swift":[],
+	"webpack":[],
+	"vue":["还行吧..", "毕竟做这个主页主要还是为了展示Vue的"]
+}

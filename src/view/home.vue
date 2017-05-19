@@ -9,7 +9,7 @@
   
    <el-row class="content">
    
-		<el-col :span="14" :offset="2" class="left">
+		<el-col :xs="{span:15,offset:1}" :sm="{span:14,offset:2}" class="left">
 			<transition name="bounce" enter-active-class="animated tada">
 				<h2 class="h2" v-show="show" >欢迎来到我的git主页.</h2>
 			</transition>
@@ -25,20 +25,21 @@
 					<li>1、<a href="https://cn.vuejs.org/" target="_blank">vue</a></li>
 					<li>2、<a href="https://router.vuejs.org/zh-cn/index.html" target="_blank">vue-router</a></li>
 					<li>3、<a href="https://github.com/mzabriskie/axios" target="_blank">axios</a></li>
-					<li>4、<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank">element-ui</a>&nbsp;&nbsp;&nbsp;<a href="http://mint-ui.github.io/docs/#/zh-cn2" target="_blank">(移动端叫mint-ui)</a></li>
-					<li>5、<a href="https://daneden.github.io/animate.css/" target="_blank">animate.css</a></li>
-					<li>6、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank">canvas</a></li>
-					<li>7、<a href="http://es6.ruanyifeng.com/" target="_blank">es6( 阮一峰教程, 我还买了纸质书支持一下 )</a></li>
-					<li>8、<a href="http://less.bootcss.com/" target="_blank">less</a></li>
+					<li>4、<a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank">vuex</a></li>
+					<li>5、<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank">element-ui</a>&nbsp;&nbsp;&nbsp;<a href="http://mint-ui.github.io/docs/#/zh-cn2" target="_blank">(移动端叫mint-ui)</a></li>
+					<li>6、<a href="https://daneden.github.io/animate.css/" target="_blank">animate.css</a></li>
+					<li>7、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank">canvas</a></li>
+					<li>8、<a href="http://es6.ruanyifeng.com/" target="_blank">es6( 阮一峰教程, 我还买了纸质书支持一下 )</a></li>
+					<li>9、<a href="http://less.bootcss.com/" target="_blank">less</a></li>
 				</ul>
 				
-				<p class="xiahua">	主页也比较简单, 自然用不上vuex了. 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣"). 最后在vue-loader.conf里加了 autoprefixer 用作css3的前缀自动补全处理. </p>
+				<p class="xiahua"> 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣"). 最后在vue-loader.conf里加了 autoprefixer 用作css3的前缀自动补全处理. </p>
 				<p>目录结构如下: <br></p>
 			</div>
 			</transition>
 		</el-col>
     
-     <el-col :span="5" :offset="1" class="myInfo">
+     <el-col :xs="7" :sm="5" :offset="1" class="myInfo">
       <div class="portraits">
        <img src="../assets/images/QQ20170514-151007@2x.png"  alt="帅哥" width="80%">
 			</div>
@@ -78,13 +79,20 @@
 		mounted() {
 			this.show = true
 		},
-
+		computed:{
+			isPhone(){
+				return window.screen.width < 520
+			}
+		},
 		components: {}
 	}
 
 </script>
 
 <style lang="less" scoped>
+	@screen-sm-min: 768px;
+	@screen-md-min: 1200px;
+	
 	.animateTran(@X, @Y) {
 		-moz-transform: translate( @X, @Y );
 		-webkit-transform: translate( @X, @Y );
@@ -99,7 +107,7 @@
 	
 	.bannerImage {
 		width: 100%;
-		min-height: 240px;
+		min-height: 100%;
 	}
 	
 	.content {
@@ -147,9 +155,9 @@
 		
 		.introduction{
 			text-align: left;
-			font-size: 18px;
+			font-size: .18rem;
 			li{
-				text-indent: 2em;
+				padding-left: 1em;
 				margin-bottom: 15px;
 			}
 		}
@@ -189,5 +197,5 @@
 			transform: rotateY(360deg)
 		}
 	}
-
+	
 </style>

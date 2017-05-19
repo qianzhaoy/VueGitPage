@@ -44,13 +44,38 @@
 					initRadius,
 					opacity
 				})
-
+			}, false)
+			
+			document.addEventListener('touchstart', function(e) {
+				const clientX = e.touches[0].clientX;
+				const clientY = e.touches[0].clientY;
+				isMove = true;
+				downTime = new Date();
+				arcPush({
+					clientX,
+					clientY,
+					initRadius,
+					opacity
+				})
+			}, false)
+			
+			document.addEventListener('touchmove', self.throttle(function(e) {
+				const clientX = e.touches[0].clientX
+				const clientY = e.touches[0].clientY
+				arcCache.push({
+					clientX,
+					clientY,
+					initRadius,
+					opacity
+				});
+			}, 30), false)
+			
+			document.addEventListener('touchend', function(e) {
+				downTime = null
 			}, false)
 
 			document.addEventListener('mouseup', function(e) {
-				if ((new Date() - downTime) < 2000) {
-					downTime = null;
-				}
+				downTime = null
 			}, false)
 			
 			document.addEventListener('mousemove', self.throttle(function(e) {
@@ -112,7 +137,6 @@
 				ctx.beginPath();
 				ctx.lineWidth = 2
 				ctx.strokeStyle = `hsla(180, 100%, 50%, ${opacity} )`
-				//								ctx.strokeStyle = `rgba(100, 207, 211, ${opacity})`
 				ctx.arc(clientX, clientY, initRadius, 0, 2 * Math.PI);
 				ctx.stroke();
 			}

@@ -1,0 +1,40 @@
+@screen-sm-min: 768px;
+@screen-md-min: 1200px;
+@media only screen and (max-width: @screen-sm-min) {
+	html {
+		font-size: 50px
+	}
+	::-webkit-scrollbar {
+		width: 0
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: #E5E9F2;
+	}
+	
+	.navgate {
+		div.customShow {
+			display: block;
+		}
+		.lookme {
+			display: none
+		}
+	}
+}
+
+
+/*	大于768 小于1200*/
+
+@media only screen and (min-width: @screen-sm-min) and (max-width: @screen-md-min) {
+	html {
+		font-size: 75px
+	}
+}
+
+
+/*	大于1200*/
+
+@media only screen and (min-width: @screen-md-min) {
+	html {
+		font-size: 100px
+	}
+}

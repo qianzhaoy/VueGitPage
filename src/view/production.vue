@@ -1,7 +1,7 @@
 <template>
     <el-row id="aboutMe">
    		<el-col :span="20" :offset="2">
-   			sdsd
+   		22
    		</el-col>
    </el-row>
 </template>
