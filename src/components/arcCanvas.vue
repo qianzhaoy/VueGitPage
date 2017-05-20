@@ -17,7 +17,6 @@
 				opacity = 1,
 				initRadius = 2;
 
-
 			let downTime;
 			let isMove = false;
 			let arcCache = [];
@@ -34,9 +33,10 @@
 			}
 
 			document.addEventListener('mousedown', function(e) {
+              
+              if(typeof document.ontouchstart !== undefined) return;
 				const clientX = e.clientX;
 				const clientY = e.clientY;
-
 				downTime = new Date();
 				arcPush({
 					clientX,
@@ -46,6 +46,23 @@
 				})
 			}, false)
 			
+            document.addEventListener('mouseup', function(e) {
+              if(document.ontouchstart) return;
+				downTime = null
+			}, false)
+			
+			document.addEventListener('mousemove', self.throttle(function(e) {
+				if (!isMove) return;
+				const clientX = e.clientX
+				const clientY = e.clientY
+				arcCache.push({
+					clientX,
+					clientY,
+					initRadius,
+					opacity
+				});
+			}, 30), false)
+          
 			document.addEventListener('touchstart', function(e) {
 				const clientX = e.touches[0].clientX;
 				const clientY = e.touches[0].clientY;
@@ -71,25 +88,10 @@
 			}, 30), false)
 			
 			document.addEventListener('touchend', function(e) {
+                isMove = false
 				downTime = null
 			}, false)
 
-			document.addEventListener('mouseup', function(e) {
-				downTime = null
-			}, false)
-			
-			document.addEventListener('mousemove', self.throttle(function(e) {
-				if (!isMove) return;
-				const clientX = e.clientX
-				const clientY = e.clientY
-				arcCache.push({
-					clientX,
-					clientY,
-					initRadius,
-					opacity
-				});
-			}, 30), false)
-			
 			document.addEventListener('dblclick', function(e) {
 				isMove = false
 			}, false)

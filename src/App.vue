@@ -1,10 +1,9 @@
 <template>
   <div id="app" v-loading.fullscreen.lock="isLoading">
-  {{routePath}}
-  <arcCanvas></arcCanvas>
+    <arcCanvas></arcCanvas>
 	<Navgate :routePath="routePath" v-once></Navgate>
 	<router-view class="view"></router-view>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -66,7 +65,7 @@
 	
 	.view {
 		margin-top: 20px;
-		padding-top: 44px;
+		padding-top: 60px;
 	}
 	
 	ul.el-menu-vertical-custom {}

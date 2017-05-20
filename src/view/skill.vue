@@ -31,7 +31,12 @@
    			</el-row>
 				
 				<el-row  class="skillInfo">
-					<el-col :span="11" :offset="1"><el-tag type="gray" color="#efe750">JQuery</el-tag></el-col>
+					<el-col :span="12"><el-tag type="gray" color="#efe750">JQuery</el-tag>
+					  <p v-for="p in jquery">{{p}}</p>
+					</el-col>
+					<el-col  :span="11" :offset="1"><el-tag color="green">nodejs</el-tag>
+					  <p v-for="p in nodejs">{{p}}</p>
+					</el-col>
 				</el-row>
 				
    		</el-col>
@@ -48,7 +53,8 @@
 				swift:[],
 				vue:[],
 				webpack:[],
-				jquery:[]
+				jquery:[],
+                nodejs: []
 			}
 		},
 		created(){
@@ -62,6 +68,7 @@
 				this.vue = data.vue
 				this.jquery = data.jquery
 				this.webpack = data.webpack
+				this.nodejs = data.nodejs
 			})
 		},
 		components: {}

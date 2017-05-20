@@ -1,10 +1,10 @@
 <template>
    <el-row class="navgate">
-		<el-col :span="2" :offset="2" class="logo">LOGO{{routePath}}</el-col>
+		<el-col :span="2" :offset="2" class="logo">LOGO</el-col>
 		<el-col :span="18" class="lookme">
 			<el-menu theme="dark" :default-active="routePath" class="el-menu-custom" router mode="horizontal">
 				<el-menu-item index="/">首页</el-menu-item>
-				<el-menu-item index="/aboutMe">xxx</el-menu-item>
+				<el-menu-item index="/aboutMe">关于我</el-menu-item>
 				<el-menu-item index="/skill">技能</el-menu-item>
 				<el-menu-item index="/production">作品</el-menu-item>
 				<el-menu-item index="/connection">xxxx</el-menu-item>
@@ -16,7 +16,7 @@
 					<el-submenu index="1">
 						<template slot="title">导航</template>
 						<el-menu-item index="/">首页</el-menu-item>
-						<el-menu-item index="/aboutMe">xxx</el-menu-item>
+						<el-menu-item index="/aboutMe">关于我</el-menu-item>
 						<el-menu-item index="/skill">xxx</el-menu-item>
 						<el-menu-item index="/production">xxx</el-menu-item>
 						<el-menu-item index="/connection">xxx</el-menu-item>
@@ -34,7 +34,6 @@
 			return {
 			}
 		},
-		components: {}
 	}
 
 </script>
