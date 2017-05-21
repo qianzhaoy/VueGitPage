@@ -1,5 +1,5 @@
 <template>
-    <el-col :xs="{span:22,offset:1}" :sm="{span:20,offset:2}" class="left">
+         <div class="left">
           <transition name="bounce" enter-active-class="animated tada">
               <h2 class="h2" v-show="show" >序&nbsp;言</h2>
           </transition>
@@ -27,7 +27,7 @@
               <p>目录结构如下: <br></p>
           </div>
           </transition>
-		</el-col>
+          </div>
 </template>
 
 <script>

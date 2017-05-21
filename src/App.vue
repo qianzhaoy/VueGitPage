@@ -1,7 +1,7 @@
 <template>
   <div id="app" v-loading.fullscreen.lock="isLoading">
-    <arcCanvas></arcCanvas>
-	<Navgate :routePath="routePath" v-once></Navgate>
+    <arcCanvas v-once></arcCanvas>
+	<Navgate v-once></Navgate>
 	<router-view class="view"></router-view>
   </div>
 </template>

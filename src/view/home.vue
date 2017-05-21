@@ -3,7 +3,13 @@
     <Banner></Banner>
     
     <el-row class="content">
-      <HomeLeft></HomeLeft>
+       <el-col :xs="{span:22,offset:1}" :sm="{span:20,offset:2}" class="left">
+        <HomeLeft></HomeLeft>
+      </el-col>
+      
+      <el-col :xs="1" :sm="2">
+        <Next goto="aboutMe"></Next>
+      </el-col>
 <!--      <HomeRight></HomeRight>-->
     </el-row>
   
@@ -13,7 +19,7 @@
 <script>
     import Banner from '@/components/banner'
     import HomeLeft from '@/components/homeLeft'
-    import HomeRight from '@/components/homeRight'
+    import Next from '@/components/next'
 	export default {
 		data() {
 			return {
@@ -27,7 +33,7 @@
 		components: {
           Banner,
           HomeLeft,
-          HomeRight
+          Next
         }
 	}
 

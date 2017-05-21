@@ -25,12 +25,13 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(route => {
 	store.commit('SetLoading', false)
+	store.commit('setPath', route.path)
 })
 
 new Vue({
   el: '#app',
   router,
-	store,
+  store,
   template: '<App/>',
   components: { App }
 })
