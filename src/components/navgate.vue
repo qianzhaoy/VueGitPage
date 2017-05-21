@@ -29,11 +29,14 @@
 
 <script>
 	export default {
-		props:['routePath'],
 		data() {
 			return {
+				routePath:""
 			}
 		},
+		created(){
+			this.routePath = this.$route.path
+		}
 	}
 
 </script>

@@ -14,11 +14,7 @@
 		name: 'app',
 		data() {
 			return {
-				routePath: ""
 			}
-		},
-		created(){
-			this.routePath = this.$route.path
 		},
 		components: {
 			ArcCanvas,
