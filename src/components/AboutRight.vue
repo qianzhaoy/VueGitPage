@@ -1,5 +1,5 @@
 <template>
-     <el-col :xs="7" :sm="5" :offset="1" class="myInfo">
+     <div class="myInfo">
      
       <div class="portraits">
          <img src="../assets/images/QQ20170514-151007@2x.png"  alt="帅哥" width="80%">
@@ -7,11 +7,11 @@
       
       <div class="introduction">
           <ul>
-              <li>个人简介 ——</li>
               <li>姓名： 钱招严</li>
               <li>职业： 前端开发工程师</li>
-              <li>年限： 两年</li>
-              <li>兴趣： 健身, 射箭, 音乐</li>
+              <li>籍贯： 温州</li>
+              <li>工作年限： 两年</li>
+              <li>兴趣： 健身, 射箭, 音乐, LOL</li>
           </ul>
       </div>
    	
@@ -22,7 +22,7 @@
             </svg>
         </a>
       </div>
-     </el-col>
+     </div>
 </template>
 
 <script>
@@ -39,15 +39,19 @@
   .myInfo {
     text-align: center;
     border-left: 1px solid;
-    height: 100vh;
+/*    height: 100vh;*/
+		
     >div {
       margin-bottom: 50px;
     }
     .introduction {
       text-align: left;
-      font-size: .18rem;
+      font-size: .14rem;
       li {
         padding-left: 1em;
+				white-space: nowrap;
+				overflow:hidden;
+				text-overflow: ellipsis;
         margin-bottom: 15px;
       }
     }
@@ -65,5 +69,5 @@
       }
     }
   }
-
+	
 </style>

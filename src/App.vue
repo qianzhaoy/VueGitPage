@@ -1,15 +1,15 @@
 <template>
   <div id="app" v-loading.fullscreen.lock="isLoading">
     <arcCanvas v-once></arcCanvas>
-	<Navgate v-once></Navgate>
-	<router-view class="view"></router-view>
+		<Navgate v-once></Navgate>
+		<router-view class="view"></router-view>
   </div>
 </template>
 
 <script>
 	import ArcCanvas from '@/components/arcCanvas'
 	import Navgate from '@/components/navgate'
-
+	import Banner from '@/components/banner'
 	export default {
 		name: 'app',
 		data() {
@@ -18,7 +18,8 @@
 		},
 		components: {
 			ArcCanvas,
-			Navgate
+			Navgate,
+			Banner
 		},
 		computed: {
 			isLoading() {
@@ -60,10 +61,8 @@
 	
 	
 	.view {
-		margin-top: 20px;
+/*		margin-top: 20px;*/
 		padding-top: 60px;
 	}
 	
-	ul.el-menu-vertical-custom {}
-
 </style>

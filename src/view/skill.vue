@@ -1,6 +1,11 @@
 <template>
-   <el-row id="aboutMe">
+   <el-row id="skill">
    		<el-col :xs="{span:22,offset:1}" :sm="{span:20, offset:2}">
+   		<SkillExp class="comprehend"></SkillExp>了解
+   			<SkillExp class="proficiency"></SkillExp>熟悉
+   			<SkillExp class="grasp"></SkillExp>掌握
+   			<SkillExp class="proficient"></SkillExp>精通
+<!--
    			<el-row class="skillInfo">
    				<el-col :span="12">
    					<el-tag color="#e44c25">HTML5</el-tag>
@@ -38,12 +43,14 @@
 					  <p v-for="p in nodejs">{{p}}</p>
 					</el-col>
 				</el-row>
+-->
 				
    		</el-col>
    </el-row>
 </template>
 
 <script>
+	import SkillExp from "@/components/skillExp"
 	export default {
 		data() {
 			return {
@@ -54,7 +61,7 @@
 				vue:[],
 				webpack:[],
 				jquery:[],
-                nodejs: []
+        nodejs: []
 			}
 		},
 		created(){
@@ -71,12 +78,15 @@
 				this.nodejs = data.nodejs
 			})
 		},
-		components: {}
+		components: {
+			SkillExp
+		}
 	}
 
 </script>
 
 <style lang="less" scoped>
+	
 	.skillInfo{
 		min-height: 3rem;
 		

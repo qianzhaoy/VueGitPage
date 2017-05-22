@@ -33,8 +33,7 @@
 			}
 
 			document.addEventListener('mousedown', function(e) {
-              
-              if(typeof document.ontouchstart !== undefined) return;
+				if (typeof document.ontouchstart !== "undefined") return;
 				const clientX = e.clientX;
 				const clientY = e.clientY;
 				downTime = new Date();
@@ -45,12 +44,12 @@
 					opacity
 				})
 			}, false)
-			
-            document.addEventListener('mouseup', function(e) {
-              if(document.ontouchstart) return;
+
+			document.addEventListener('mouseup', function(e) {
+				if (document.ontouchstart) return;
 				downTime = null
 			}, false)
-			
+
 			document.addEventListener('mousemove', self.throttle(function(e) {
 				if (!isMove) return;
 				const clientX = e.clientX
@@ -62,7 +61,7 @@
 					opacity
 				});
 			}, 30), false)
-          
+
 			document.addEventListener('touchstart', function(e) {
 				const clientX = e.touches[0].clientX;
 				const clientY = e.touches[0].clientY;
@@ -75,7 +74,7 @@
 					opacity
 				})
 			}, false)
-			
+
 			document.addEventListener('touchmove', self.throttle(function(e) {
 				const clientX = e.touches[0].clientX
 				const clientY = e.touches[0].clientY
@@ -86,9 +85,9 @@
 					opacity
 				});
 			}, 30), false)
-			
+
 			document.addEventListener('touchend', function(e) {
-                isMove = false
+				isMove = false
 				downTime = null
 			}, false)
 

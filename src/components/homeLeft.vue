@@ -1,33 +1,32 @@
 <template>
-         <div class="left">
-          <transition name="bounce" enter-active-class="animated tada">
-              <h2 class="h2" v-show="show" >序&nbsp;言</h2>
-          </transition>
-
-          <transition name="slide-left-p1">
-          <div v-show="show">
+	 <div class="left">
+		<transition name="bounce" enter-active-class="animated tada">
+				<h2 class="h2" v-show="show" >序&nbsp;言</h2>
+		</transition>
+		 
+		<div class="content">
 <!--				<p>一直想去把GitPage这个东西做起来, 但是老是不知道从哪里入手, 不会设计. 脑袋空空的. 自己呢~ 想来想去又没有什么可以值得展示的技术.</p>-->
-              <p>
-                  好了. 简单介绍一下这个个人主页使用到的技术东西.(附链接).
-              </p>
+				<p>
+						好了. 简单介绍一下这个个人主页使用到的技术东西.(附链接).
+				</p>
 
-              <ul>
-                  <li>1、<a href="https://cn.vuejs.org/" target="_blank">vue</a></li>
-                  <li>2、<a href="https://router.vuejs.org/zh-cn/index.html" target="_blank">vue-router</a></li>
-                  <li>3、<a href="https://github.com/mzabriskie/axios" target="_blank">axios</a></li>
-                  <li>4、<a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank">vuex</a></li>
-                  <li>5、<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank">element-ui</a>&nbsp;&nbsp;&nbsp;<a href="http://mint-ui.github.io/docs/#/zh-cn2" target="_blank">(移动端叫mint-ui)</a></li>
-                  <li>6、<a href="https://daneden.github.io/animate.css/" target="_blank">animate.css</a></li>
-                  <li>7、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank">canvas</a></li>
-                  <li>8、<a href="http://es6.ruanyifeng.com/" target="_blank">es6( 阮一峰教程, 我还买了纸质书支持一下 )</a></li>
-                  <li>9、<a href="http://less.bootcss.com/" target="_blank">less(现学现卖)</a></li>
-              </ul>
+				<ul>
+						<li>1、<a href="https://cn.vuejs.org/" target="_blank">vue</a></li>
+						<li>2、<a href="https://router.vuejs.org/zh-cn/index.html" target="_blank">vue-router</a></li>
+						<li>3、<a href="https://github.com/mzabriskie/axios" target="_blank">axios</a></li>
+						<li>4、<a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank">vuex</a></li>
+						<li>5、<a href="http://element.eleme.io/#/zh-CN/component/installation" target="_blank">element-ui</a>&nbsp;&nbsp;&nbsp;<a href="http://mint-ui.github.io/docs/#/zh-cn2" target="_blank">(移动端叫mint-ui)</a></li>
+						<li>6、<a href="https://daneden.github.io/animate.css/" target="_blank">animate.css</a></li>
+						<li>7、<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank">canvas</a></li>
+						<li>8、<a href="http://es6.ruanyifeng.com/" target="_blank">es6( 阮一峰教程, 我还买了纸质书支持一下 )</a></li>
+						<li>9、<a href="http://less.bootcss.com/" target="_blank">less(现学现卖)</a></li>
+				</ul>
 
-              <p class="xiahua"> 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣"). 最后在vue-loader.conf里加了 autoprefixer 用作css3的前缀自动补全处理. </p>
-              <p>目录结构如下: <br></p>
-          </div>
-          </transition>
-          </div>
+				<p class="xiahua"> 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣"). 最后在vue-loader.conf里加了 autoprefixer 用作css3的前缀自动补全处理. </p>
+				<p>目录结构如下: <br></p>
+		</div>
+		<div style="height:500px"></div>
+		</div>
 </template>
 
 <script>
@@ -55,8 +54,10 @@
   }
   
   .left {
+/*
     height: 100vh;
     overflow: auto;
+*/
     
     .h2 {
       font-size: 0.35rem;
@@ -86,23 +87,16 @@
     }
   }
   
-  .slide-left-p1-enter {
-    .animateTran(-1200px, 0)
-  }
+	.content{
+		animation: late 1s ease-out;		
+	}
   
-  .slide-left-p1-enter-active {
-    transition: all 1s ease-in;
-  }
-  
-  @keyframes headRotate {
-    0 {
-      transform: rotateY(0)
+  @keyframes late {
+    from {
+      transform: translate(-1200px, 0)
     }
-    60% {
-      transform: rotateY(360deg)
-    }
-    100% {
-      transform: rotateY(360deg)
+    to {
+       transform: translate(0, 0)
     }
   }
 

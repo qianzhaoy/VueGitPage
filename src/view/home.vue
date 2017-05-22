@@ -6,13 +6,7 @@
        <el-col :xs="{span:22,offset:1}" :sm="{span:20,offset:2}" class="left">
         <HomeLeft></HomeLeft>
       </el-col>
-      
-      <el-col :xs="1" :sm="2">
-        <Next goto="aboutMe"></Next>
-      </el-col>
-<!--      <HomeRight></HomeRight>-->
     </el-row>
-  
   </div>
 </template>
 
