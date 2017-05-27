@@ -1,10 +1,39 @@
 <template>
    <el-row id="skill">
    		<el-col :xs="{span:22,offset:1}" :sm="{span:20, offset:2}">
-   		<SkillExp class="comprehend"></SkillExp>了解
-   			<SkillExp class="proficiency"></SkillExp>熟悉
-   			<SkillExp class="grasp"></SkillExp>掌握
-   			<SkillExp class="proficient"></SkillExp>精通
+   			<el-row type="flex" justify="space-around">
+   				<SkillExp level="comprehend">了解</SkillExp>
+   				<SkillExp level="proficiency">熟悉</SkillExp>
+   				<SkillExp level="grasp">掌握</SkillExp>
+   				<SkillExp level="proficient">精通</SkillExp>
+   			</el-row>
+   			
+   			<div class="boxrotate">
+   				<div class="css3">
+   					<div class="rotateZ">
+   						<SkillExp level="proficient">css3</SkillExp>
+						</div>
+   				</div>
+   				
+   				<div class="html5">
+   					<div class="rotateZ">
+   						<SkillExp level="proficient">html5</SkillExp>
+						</div>	
+   				</div>
+   				
+   				 <div class="vue">
+   					<div class="rotateZ">
+   						<SkillExp level="grasp">Vue</SkillExp>
+						</div>	
+   				</div>
+   				
+   				<div>
+   					<SkillExp level="proficient" class="fixedCenter" style="position:absolute;height:200px;width:200px">javascript</SkillExp>
+					</div>
+   			</div>
+				
+   			
+   				
 <!--
    			<el-row class="skillInfo">
    				<el-col :span="12">
@@ -44,7 +73,6 @@
 					</el-col>
 				</el-row>
 -->
-				
    		</el-col>
    </el-row>
 </template>
@@ -54,17 +82,17 @@
 	export default {
 		data() {
 			return {
-				html:[],
-				css:[],
-				javascript:[],
-				swift:[],
-				vue:[],
-				webpack:[],
-				jquery:[],
-        nodejs: []
+				html: [],
+				css: [],
+				javascript: [],
+				swift: [],
+				vue: [],
+				webpack: [],
+				jquery: [],
+				nodejs: []
 			}
 		},
-		created(){
+		created() {
 			var self = this
 			this.$Api.getSkill().then(res => {
 				const data = res.data;
@@ -86,19 +114,93 @@
 </script>
 
 <style lang="less" scoped>
+	.keyframes (@name, @Z) {
+		@keyframes @name {
+			0% {
+				transform: rotateX(-70deg) rotateY(0deg) rotateZ(@Z)
+			}
+			100% {
+				transform: rotateX(-70deg) rotateY(360deg) rotateZ(@Z)
+			}
+		}
+	}
 	
-	.skillInfo{
-		min-height: 3rem;
-		
-		p{
-			margin-top: .2rem;
-/*			text-indent: 2em*/
+	.trackRotate(@X, @Y, @animateName, @animationdelay: 0) {
+		transform: rotateX(@X) rotateY(@Y);
+		transform-style: preserve-3d;
+		div.exp {
+			left: 30px;
+			animation: @animateName 6s infinite linear;
+			animation-delay: @animationdelay;
 		}
 		
-		p:last-child{
-			margin-bottom: .2rem;
+		div.rotateZ{
+			animation-delay: @animationdelay;
 		}
+	}
+	
+	#skill {
+		margin-top: 20px;
+		height: calc(~"100vh - 20px");
+		position: relative;
+	}
+	
+	.fixedCenter {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+	.boxrotate {
+		height: 400px;
+		width: 400px;
+		position: absolute;
+		transform-style: preserve-3d;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transform-style: preserve-3d;
+		>div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		div.rotateZ {
+			border: 8px solid #fff;
+			border-radius: 50%;
+			height: 100%;
+			transform: rotateZ(360deg);
+			transform-style: preserve-3d;
+			animation: part 6s infinite linear;
+		}
+	}
+	
+	.css3 {
+		.trackRotate(70deg, 60deg, cssFixed);
+	}
+	
+	.html5 {
+		.trackRotate(70deg, -60deg, htmlFixed);
+	}
+	
+	.vue{
+		.trackRotate(80deg, 0, vueFixed);
 		
 	}
 	
+	@keyframes part {
+		0% {
+			transform: rotateZ(0);
+		}
+		100% {
+			transform: rotateZ(360deg)
+		}
+	}
+	
+	.keyframes(htmlFixed, 50deg);
+	.keyframes(cssFixed, -50deg);
+	.keyframes(vueFixed, 0deg);
+
 </style>
