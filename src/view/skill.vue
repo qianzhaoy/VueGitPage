@@ -51,81 +51,16 @@
    				   <SkillExp level="proficient" class="fixedCenter" style="position:absolute;height:200px;width:200px">javascript</SkillExp>
 				</div>
    			</div>
-				
-   			
-   				
-<!--
-   			<el-row class="skillInfo">
-   				<el-col :span="12">
-   					<el-tag color="#e44c25">HTML5</el-tag>
-   					<p v-for="p in html">{{p}}</p>
-   				</el-col>
-   				<el-col :span="11" :offset="1">
-   					<el-tag color="#3b9adb">CSS + CSS3</el-tag>
-   					<p v-for="p in css">{{p}}</p>
-   				</el-col>
-   			</el-row>
-   		
-   			<el-row class="skillInfo">
-   				<el-col :span="12"><el-tag color="#35495e">javascript</el-tag>
-   					<p v-for="p in javascript">{{p}}</p>
-   				</el-col>
-   				<el-col :span="11" :offset="1"><el-tag type="success" color="#35495e">Vue</el-tag>
-   					<p v-for="p in vue">{{p}}</p>
-   				</el-col>
-   			</el-row>
-   			
-   			<el-row class="skillInfo">
-   				<el-col :span="12"><el-tag type="warning">Swift</el-tag>
-   					<p v-for="p in swift">{{p}}</p>
-   				</el-col>
-   				<el-col :span="11" :offset="1"><el-tag type="primary">webpack</el-tag>
-   					<p v-for="p in webpack">{{p}}</p>
-   				</el-col>
-   			</el-row>
-				
-				<el-row  class="skillInfo">
-					<el-col :span="12"><el-tag type="gray" color="#efe750">JQuery</el-tag>
-					  <p v-for="p in jquery">{{p}}</p>
-					</el-col>
-					<el-col  :span="11" :offset="1"><el-tag color="green">nodejs</el-tag>
-					  <p v-for="p in nodejs">{{p}}</p>
-					</el-col>
-				</el-row>
--->
    		</el-col>
    </el-row>
 </template>
 
 <script>
   import SkillExp from "@/components/skillExp"
+  import {
+    throttle
+  } from "@/assets/js/tool"
   export default {
-    data() {
-      return {
-        html: [],
-        css: [],
-        javascript: [],
-        swift: [],
-        vue: [],
-        webpack: [],
-        jquery: [],
-        nodejs: []
-      }
-    },
-    created() {
-      var self = this
-      this.$Api.getSkill().then(res => {
-        const data = res.data;
-        this.html = data.html
-        this.css = data.css
-        this.javascript = data.javascript
-        this.swift = data.swift
-        this.vue = data.vue
-        this.jquery = data.jquery
-        this.webpack = data.webpack
-        this.nodejs = data.nodejs
-      })
-    },
     components: {
       SkillExp
     }
@@ -137,16 +72,15 @@
   .keyframes (@name, @Z) {
     @keyframes @name {
       0% {
-        transform: rotateX(-70deg) rotateY(0deg) rotateZ(@Z)
+        transform: rotateX(-90deg) rotateY(0deg) rotateZ(@Z)
       }
       100% {
-        transform: rotateX(-70deg) rotateY(360deg) rotateZ(@Z)
+        transform: rotateX(-90deg) rotateY(360deg) rotateZ(@Z)
       }
     }
   }
   
   .trackRotate(@X, @Y, @animateName) {
-    
     transform: rotateX(@X) rotateY(@Y);
     transform-style: preserve-3d;
     div.exp {
@@ -168,15 +102,13 @@
   }
   
   .boxrotate {
-    height: 400px;
-    width: 400px;
     position: absolute;
-    transform-style: preserve-3d;
     top: 50%;
     left: 50%;
+    height: 400px;
+    width: 400px;
+    transform-style: preserve-3d;
     transform: translate(-50%, -40%);
-    cursor: move;
-    
     >div {
       position: absolute;
       top: 0;
@@ -247,7 +179,7 @@
     }
   }
   
-  .keyframes(htmlFixed, 50deg);
+  .keyframes(htmlFixed, 60deg);
   .keyframes(cssFixed, -50deg);
   .keyframes(vueFixed, 0deg);
   /*  .keyframes(swiftFixed, 100deg);*/
