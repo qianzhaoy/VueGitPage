@@ -118,7 +118,7 @@
       transform-style: preserve-3d;
     }
     div.rotateZ {
-      border: 8px solid #fff;
+      border: 3px solid #fff;
       border-radius: 50%;
       height: 100%;
       transform: rotateZ(360deg);
@@ -127,7 +127,7 @@
     }
     .nodeJs {
       div.rotateZ {
-        border: 8px solid #fff;
+        border: 3px solid #fff;
         border-radius: 50%;
         height: 100%;
         transform: rotateZ(360deg);
