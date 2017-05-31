@@ -31,6 +31,11 @@ const Api = {
 	getData(params) {
 		const url = "/static/data.json"
 		return Axios.get(url)
+	},
+	
+	getProjectList() {
+		const url = "/static/production.json"
+		return Axios.get(url)
 	}
 }
 
