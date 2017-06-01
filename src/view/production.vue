@@ -12,9 +12,20 @@
 				<p>{{card.describe}}</p>
 			</el-card>
 			
+			<el-row>
+				<div class="pages">
+					<el-pagination
+						layout="prev, pager, next"
+						:total="cloneList.length"
+						:page-size="pageSize"
+						@current-change="pageChange"
+						>
+					</el-pagination>
+				</div>
+    	</el-row>
     </el-col>
     
-    <el-col :xs="0" :sm="{span:5, offset: 1}" class="search">
+    <el-col :xs="0" :sm="{span:5, offset: 1}" class="filter">
     	<div>
     		<h2>标题</h2>
 				<div style="width:80%;">
@@ -28,11 +39,12 @@
      	<div>
 				<h2>标签</h2>
 				<ul>
-					<li><el-tag># Javascript</el-tag></li>
-					<li><el-tag type="primary"># Css3</el-tag></li>
-					<li><el-tag type="danger"># Html5</el-tag></li>
-					<li><el-tag type="success"># NodeJs</el-tag></li>
-					<li><el-tag type="success" color="black"># Vue</el-tag></li>
+					<li><el-tag type="gray" color="#ffba00" @click.native="tagFiltr('all')"># 全部</el-tag></li>
+					<li><el-tag @click.native="tagFiltr('Javascript')"># Javascript</el-tag></li>
+					<li><el-tag type="primary"  @click.native="tagFiltr('Css3')"># Css3</el-tag></li>
+					<li><el-tag type="danger"  @click.native="tagFiltr('Html5')"># Html5</el-tag></li>
+					<li><el-tag type="success"  @click.native="tagFiltr('NodeJs')"># NodeJs</el-tag></li>
+					<li><el-tag type="success" color="black" @click.native="tagFiltr('Vue')"># Vue</el-tag></li>
 				</ul>
 			</div>
 			
@@ -55,17 +67,6 @@
     </el-col>
   </el-row>
 
-   <el-row>
-    <div class="pages">
-        <el-pagination
-        layout="prev, pager, next"
-        :total="list.length"
-        :page-size="pageSize"
-        @current-change="pageChange"
-        >
-        </el-pagination>
-    </div>
-    </el-row>
   </div>
 </template>
 
@@ -75,7 +76,8 @@
 			return {
 				list: [],
 				pageSize: 4,
-				currPage: 1
+				currPage: 1,
+				tag: "all"
 			}
 		},
 		created() {
@@ -90,14 +92,23 @@
 			},
 			pageChange(current){
 				this.currPage = current;
+			},
+			tagFiltr(tag){
+				this.tag = tag;
 			}
 		},
 		computed:{
+			cloneList(){
+				return this.list.filter( li => {
+					return  this.tag === "all" || li.tags === this.tag
+				})
+			},
 			showList(){
-				const prve = (this.currPage - 1) * this.pageSize;
-				const next = prve + this.pageSize;
-				return this.list.slice(prve, next);
-			}
+				const vm = this;
+				const prve = (vm.currPage - 1) * vm.pageSize;
+				const next = prve + vm.pageSize;
+				return vm.cloneList.slice(prve, next);
+			},
 		},
 		components: {}
 	}
@@ -112,7 +123,7 @@
 		font-size: .18rem;
 		>.project {
 			min-height: 90%;
-			min-height: calc(~"100% - 60px");
+			min-height: calc(~"100% - 80px");
 		}
 	}
 	
@@ -126,7 +137,7 @@
 		}
 	}
 	
-	.search {
+	.filter {
 		overflow: hidden;
 		text-align: left;
 		>div:nth-child(1) {
@@ -140,6 +151,7 @@
 				color: firebrick;
 			}
 			li {
+				cursor: pointer;
 				margin: 8px 5px;
 			}
 		}
