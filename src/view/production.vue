@@ -3,26 +3,29 @@
   <el-row class="project">
     <el-col :xs="{span:22,offset:1}" :sm="{span:14, offset:2}" class="content">
 			
-    	<div v-if="list.length == 0">加载中....</div>
-			<el-card class="box-card" v-for="card in showList" :key="card.time">
-				<div slot="header" class="clearfix">
-					<span style="line-height: 25px;">{{card.title}}</span><span style="font-size:10px;margin-left:20px;">时间: {{card.time}}</span>
-					<el-button style="float: right;" type="primary">打开全文</el-button>
-				</div>
-				<p>{{card.describe}}</p>
-			</el-card>
-			
-			<el-row>
-				<div class="pages">
-					<el-pagination
-						layout="prev, pager, next"
-						:total="cloneList.length"
-						:page-size="pageSize"
-						@current-change="pageChange"
-						>
-					</el-pagination>
-				</div>
-    	</el-row>
+      <div v-if="list.length == 0">加载中....</div>
+      
+      <transition-group name="list" tag="div">
+        <el-card class="box-card" v-for="card in showList" :key="card.time">
+          <div slot="header" class="clearfix">
+              <span style="line-height: 25px;">{{card.title}}</span><span style="font-size:10px;margin-left:20px;">时间: {{card.time}}</span>
+              <el-button style="float: right;" type="primary">打开全文</el-button>
+          </div>
+          <p>{{card.describe}}</p>
+        </el-card>
+      </transition-group>
+
+        <el-row>
+          <div class="pages">
+              <el-pagination
+                  layout="prev, pager, next"
+                  :total="cloneList.length"
+                  :page-size="pageSize"
+                  @current-change="pageChange"
+                  >
+              </el-pagination>
+          </div>
+        </el-row>
     </el-col>
     
     <el-col :xs="0" :sm="{span:5, offset: 1}" class="filter">
@@ -31,7 +34,10 @@
 				<div style="width:80%;">
 					<el-input
 						placeholder="标题搜索"
-						icon="search">
+						icon="search"
+                        v-model="searchTitle"
+						@click="search"
+						@change="search">
 					</el-input>
 				</div>
 			</div>
@@ -71,95 +77,114 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				list: [],
-				pageSize: 4,
-				currPage: 1,
-				tag: "all"
-			}
-		},
-		created() {
-			this.init()
-		},
-		methods: {
-			init() {
-				const self = this;
-				self.$Api.getProjectList().then(res => {
-					self.list = res.data;
-				})
-			},
-			pageChange(current){
-				this.currPage = current;
-			},
-			tagFiltr(tag){
-				this.tag = tag;
-			}
-		},
-		computed:{
-			cloneList(){
-				return this.list.filter( li => {
-					return  this.tag === "all" || li.tags === this.tag
-				})
-			},
-			showList(){
-				const vm = this;
-				const prve = (vm.currPage - 1) * vm.pageSize;
-				const next = prve + vm.pageSize;
-				return vm.cloneList.slice(prve, next);
-			},
-		},
-		components: {}
-	}
+  export default {
+    data() {
+      return {
+        list: [],
+        pageSize: 4,
+        currPage: 1,
+        searchTitle:"",
+        tag: "all"
+      }
+    },
+    created() {
+      this.init()
+    },
+    methods: {
+      init() {
+        const self = this;
+        self.$Api.getProjectList().then(res => {
+          self.list = res.data;
+        })
+      },
+      pageChange(current) {
+        this.currPage = current;
+      },
+      tagFiltr(tag) {
+        this.tag = tag;
+      },
+      search(){
+        alert(this.searchTitle)
+      }
+    },
+    computed: {
+      cloneList() {
+        return this.list.filter(li => {
+          return this.tag === "all" || li.tags === this.tag
+        })
+      },
+      showList() {
+        const vm = this;
+        const prve = (vm.currPage - 1) * vm.pageSize;
+        const next = prve + vm.pageSize;
+        return vm.cloneList.slice(prve, next);
+      },
+    },
+    components: {}
+  }
 
 </script>
 
 <style lang="less" scoped>
-	#production {
-		margin-top: 20px;
-		height: calc(~"100vh - 20px");
-		position: relative;
-		font-size: .18rem;
-		>.project {
-			min-height: 90%;
-			min-height: calc(~"100% - 80px");
-		}
-	}
-	
-	.content {
-		>div {
-			margin-bottom: 20px;
-		}
-		h2 {
-			font-size: .26rem;
-			margin-bottom: 5px;
-		}
-	}
-	
-	.filter {
-		overflow: hidden;
-		text-align: left;
-		>div:nth-child(1) {
-			margin-top: 0;
-		}
-		>div {
-			text-align: left;
-			margin: 25px 0 5px 0;
-			h2 {
-				margin-bottom: 3px;
-				color: firebrick;
-			}
-			li {
-				cursor: pointer;
-				margin: 8px 5px;
-			}
-		}
-	}
-	
-	.pages {
-		text-align: center;
-		padding-bottom: 20px;
-	}
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 1s;
+  }
+  
+  .list-leave-active {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  
+  .list-enter{
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  
+  #production {
+    margin-top: 20px;
+    height: calc(~"100vh - 20px");
+    position: relative;
+    font-size: .18rem;
+    >.project {
+      min-height: 90%;
+      min-height: calc(~"100% - 80px");
+    }
+  }
+  
+  .content {
+    div.box-card {
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: .26rem;
+      margin-bottom: 5px;
+    }
+  }
+  
+  .filter {
+    overflow: hidden;
+    text-align: left;
+    >div:nth-child(1) {
+      margin-top: 0;
+    }
+    >div {
+      text-align: left;
+      margin: 25px 0 5px 0;
+      h2 {
+        margin-bottom: 3px;
+        color: firebrick;
+      }
+      li {
+        cursor: pointer;
+        margin: 8px 5px;
+      }
+    }
+  }
+  
+  .pages {
+    text-align: center;
+    padding-bottom: 20px;
+  }
 
 </style>
