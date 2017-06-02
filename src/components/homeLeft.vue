@@ -22,7 +22,7 @@
 						<li>9、<a href="http://less.bootcss.com/" target="_blank">less(现学现卖)</a></li>
 				</ul>
 
-				<p class="xiahua"> 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣"). 最后在vue-loader.conf里加了 autoprefixer 用作css3的前缀自动补全处理. </p>
+				<p class="xiahua"> 试了一下饿了么出品的 element-ui 组件库. 然后用animate.css做了部分还行的动画. 当然也有用vue的方式写了看起来挺low的动画.. (￣▽￣").</p>
 				<p>目录结构如下: <br></p>
 		</div>
 		<div style="height:500px"></div>
