@@ -6,17 +6,16 @@
       <div v-if="list.length == 0">加载中....</div>
       
       <transition-group name="list" tag="div">
-        <el-card class="box-card" v-for="card in showList" :key="card.time">
-          <div slot="header" class="clearfix">
-              <span style="line-height: 25px;">{{card.title}}</span><span style="font-size:10px;margin-left:0.2rem;">时间: {{card.time}}</span>
-              <el-button style="float: right;" type="primary">打开全文</el-button>
-          </div>
-          <p>{{card.describe}}</p>
+				<el-card class="box-card" v-for="card in showList" :key="card.key">
+					<div slot="header" class="clearfix">
+							<span style="line-height: 25px;">{{card.title}}</span><span style="font-size:10px;margin-left:0.2rem;">时间: {{card.time}}</span>
+							<el-button style="float: right;" type="primary">打开全文</el-button>
+					</div>
+					<p>{{card.describe}}</p>
         </el-card>
-      </transition-group>
-
-        <el-row>
-          <div class="pages">
+        
+        <el-row class="pages" key="pages">
+          <div>
               <el-pagination
                   layout="prev, pager, next"
                   :total="cloneList.length"
@@ -26,6 +25,10 @@
               </el-pagination>
           </div>
         </el-row>
+        
+      </transition-group>
+      
+
     </el-col>
     
     <el-col :xs="0" :sm="{span:5, offset: 1}" class="filter">
@@ -57,7 +60,7 @@
 			<div>
 				<h2>排序</h2>
 				<ul>
-					<li>时间</li>
+					<li @click="add">时间</li>
 				</ul>
 			</div>
 			
@@ -80,7 +83,7 @@
 	export default {
 		data() {
 			return {
-				list: [],
+				list: [" ", " ", " ", " "],
 				pageSize: 4,
 				currPage: 1,
 				searchTitle: "",
@@ -106,12 +109,12 @@
 			search() {
 				console.log(this.searchTitle)
 			},
-			reset(){
+			reset() {
 				this.searchTitle = ""
+			},
+			add() {
+				this.list.splice(2, 1)
 			}
-		},
-		filters: {
-
 		},
 		computed: {
 			cloneList() {
@@ -119,11 +122,11 @@
 				return self.list.filter(li => {
 					//标签检索
 					const tagFilter = self.tag === "all" || li.tags === self.tag,
-					
-								//标题检索
-								reg = new RegExp(self.searchTitle),
-								titleFilter = reg.test(li.title);
-					
+
+						//标题检索
+						reg = new RegExp(self.searchTitle),
+						titleFilter = reg.test(li.title);
+
 					return tagFilter && titleFilter
 				})
 			},
@@ -131,7 +134,7 @@
 				const vm = this;
 				const prve = (vm.currPage - 1) * vm.pageSize;
 				const next = prve + vm.pageSize;
-				
+
 				return vm.cloneList.slice(prve, next);
 			},
 		},
@@ -146,14 +149,14 @@
 		transition: all 1s;
 	}
 	
-	.list-leave-active {
+	.list-leave-active,
+	.list-enter {
 		opacity: 0;
 		transform: translateX(-300px);
 	}
 	
-	.list-enter {
-		opacity: 0;
-		transform: translateX(300px);
+	.list-leave-active {
+		position: absolute;
 	}
 	
 	#production {
@@ -169,6 +172,7 @@
 	
 	.content {
 		div.box-card {
+			transition: all 1s;
 			margin-bottom: 20px;
 		}
 		h2 {
@@ -199,6 +203,7 @@
 	
 	.pages {
 		text-align: center;
+		transition: all 1s;
 		padding-bottom: 20px;
 	}
 
