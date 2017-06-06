@@ -2,7 +2,7 @@
   <div id="home"> 
     <Banner></Banner>
     
-    <el-row class="content">
+    <el-row class="wrap">
        <el-col :xs="{span:22,offset:1}" :sm="{span:20,offset:2}" class="left">
         <HomeLeft></HomeLeft>
       </el-col>
@@ -38,7 +38,7 @@
 		margin-top: 0;
 	}
 	
-	.content {
+	.wrap {
 		margin-top: 20px;
 	}
 	

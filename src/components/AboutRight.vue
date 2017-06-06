@@ -5,12 +5,20 @@
          <img src="../assets/images/QQ20170514-151007@2x.png"  alt="帅哥" width="80%">
       </div>
       
+      <el-popover
+        ref="popover1"
+        placement="top-start"
+        width="100"
+        trigger="hover"
+        content="健身, 射箭, 音乐, LOL">
+      </el-popover>
+      
       <div class="introduction">
           <ul>
               <li>姓名： 钱招严</li>
               <li>年龄： 25</li>
               <li>职业： 前端开发工程师</li>
-							<li>兴趣： 健身, 射箭, 音乐, LOL</li>
+		      <li v-popover:popover1>兴趣： 健身, 射箭, 音乐, LOL</li>
               <li>所在地： 杭州</li>
               <li>工作年限： 两年</li>
           </ul>

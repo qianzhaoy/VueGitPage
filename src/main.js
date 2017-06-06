@@ -9,7 +9,8 @@ import Api from './API/axiosApi'
 import { Loading } from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import "./assets/css/reset.css"
-import "./assets/css/respond.less"
+//自适应的css在这
+import "./assets/css/respond.less" 
 import "animate.css";
 
 Vue.use(ElementUI)

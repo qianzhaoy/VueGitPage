@@ -36,7 +36,7 @@
 	}
 	
 	body {
-		background-color: #E5E9F2
+		background-color: rgb(147,224,255)
 	}
 	
 	::-webkit-scrollbar {
