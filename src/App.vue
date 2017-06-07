@@ -20,6 +20,11 @@
 			ArcCanvas,
 			Navgate,
 		},
+		watch:{
+			$route(){
+				document.documentElement.scrollTop = 0
+			}
+		},
 		computed: {
 			isLoading() {
 				return this.$store.state.isLoading
@@ -64,12 +69,6 @@
 	.fade-leave-active,
 	.fade-enter {
 		opacity: 0;
-	}
-	
-	.fade-leave {
-		position: absolute;
-		top: 0;
-		left: 0;
 	}
 	
 	.fade-enter-active,

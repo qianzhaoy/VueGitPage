@@ -36,13 +36,24 @@
 </script>
 
 <style lang="less" scoped>
+	@lineHight: 1.2rem;
+	@bot: bottom;
+	.mask(@direction: left) {
+		position: absolute;
+		top: -1px;
+		@{direction}: 0;
+		height: @lineHight;
+		background-color: rgb(147, 224, 255);
+		animation: maskShow 2s ease-out
+	}
+	
 	#connection {
 		font-size: .18rem;
 		margin-top: .5rem;
 	}
 	
-	.info{
-		>div{
+	.info {
+		>div {
 			margin-bottom: .3rem;
 			font-size: .24rem
 		}
@@ -50,7 +61,7 @@
 	
 	div.title {
 		position: relative;
-		height: 1.2rem;
+		height: @lineHight;
 		border-top: 1px solid #fff;
 		border-bottom: 1px solid #fff;
 		h1 {
@@ -58,38 +69,27 @@
 			top: 0;
 			left: 0;
 			text-indent: 2em;
-			line-height: 1.2rem;
+			line-height: @lineHight;
 			font-weight: 700;
 			z-index: 9;
 		}
 		.maskleft {
-			position: absolute;
-			top: -1px;
-			left: -1px;
-			height: 1.2rem;
-			background-color: rgb(147, 224, 255);
-			animation: maskShow 2s ease-out
+			.mask(left);
 		}
 		.maskright {
-			position: absolute;
-			top: -1px;
-			right: -1px;
-			height: 1.2rem;
-			background-color: rgb(147, 224, 255);
-			animation: maskShow 2s ease-out
+			.mask(right);
 		}
 	}
 	
-	div.connect{
-		>div{
+	div.connect {
+		>div {
 			line-height: .8rem;
 			border-radius: .1rem;
 			margin-top: .2rem;
 			background-color: rgba(255, 255, 255, 0.65);
 			text-indent: 2em;
 		}
-		
-		a{
+		a {
 			text-decoration: underline;
 		}
 	}
@@ -100,7 +100,6 @@
 		}
 		100% {
 			width: 0;
-			display: none;
 		}
 	}
 

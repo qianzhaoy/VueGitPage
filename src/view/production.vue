@@ -162,7 +162,6 @@
   #production {
     margin-top: 20px;
     height: calc(~"100vh - 20px");
-    position: relative;
     font-size: .18rem;
     >.project {
       min-height: 90%;
