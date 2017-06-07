@@ -2,24 +2,23 @@
   <div id="app" v-loading.fullscreen.lock="isLoading">
     <arcCanvas v-once></arcCanvas>
 		<Navgate v-once></Navgate>
-		<router-view class="view"></router-view>
+		<transition name="fade">
+			<router-view class="view" style="position:absolute;top:0;width:100%"></router-view>
+		</transition>
   </div>
 </template>
 
 <script>
 	import ArcCanvas from '@/components/arcCanvas'
 	import Navgate from '@/components/navgate'
-	import Banner from '@/components/banner'
 	export default {
 		name: 'app',
 		data() {
-			return {
-			}
+			return {}
 		},
 		components: {
 			ArcCanvas,
 			Navgate,
-			Banner
 		},
 		computed: {
 			isLoading() {
@@ -36,7 +35,7 @@
 	}
 	
 	body {
-		background-color: rgb(147,224,255)
+		background-color: rgb(147, 224, 255)
 	}
 	
 	::-webkit-scrollbar {
@@ -52,17 +51,30 @@
 		background-color: #fff;
 		border-radius: 5px
 	}
-	/*	小于768*/
 	
 	.logo {
 		line-height: 60px;
 		color: #fff;
 	}
 	
-	
 	.view {
-/*		margin-top: 20px;*/
 		padding-top: 60px;
 	}
 	
+	.fade-leave-active,
+	.fade-enter {
+		opacity: 0;
+	}
+	
+	.fade-leave {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	.fade-enter-active,
+	.fade-leave-active {
+		transition: opacity 1s ease;
+	}
+
 </style>

@@ -13,7 +13,6 @@
 <script>
     import Banner from '@/components/banner'
     import HomeLeft from '@/components/homeLeft'
-    import Next from '@/components/next'
 	export default {
 		data() {
 			return {
@@ -27,7 +26,6 @@
 		components: {
           Banner,
           HomeLeft,
-          Next
         }
 	}
 
