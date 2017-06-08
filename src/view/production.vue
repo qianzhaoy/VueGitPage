@@ -6,14 +6,16 @@
       <div v-if="list.length == 0">加载中....</div>
       
       <transition-group name="list" tag="div">
-        <el-card class="box-card" v-for="card in showList" :key="card.key">
-            <div slot="header" class="clearfix">
-                <span style="line-height: 25px;">{{card.title}}</span>
-                <span style="font-size:10px;margin-left:0.2rem;">时间: {{card.time}}</span>
-                <el-button style="float: right;" type="primary">打开全文</el-button>
-            </div>
-            <p>{{card.describe}}</p>
-        </el-card>
+				<el-row class="box-card"  v-for="card in showList" :key="card">
+					<el-card>
+							<div slot="header" class="clearfix">
+									<span style="line-height: 25px;">{{card.title}}</span>
+									<span style="font-size:10px;margin-left:0.2rem;">时间: {{card.time}}</span>
+									<el-button style="float: right;" type="primary">打开全文</el-button>
+							</div>
+							<p>{{card.describe}}</p>
+					</el-card>
+				</el-row>
         
         <el-row class="pages" key="pages">
           <div>
@@ -84,7 +86,7 @@
   export default {
     data() {
       return {
-        list: [" ", " ", " ", " "],
+        list: [],
         pageSize: 4,
         currPage: 1,
         searchTitle: "",
