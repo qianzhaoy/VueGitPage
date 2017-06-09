@@ -57,9 +57,6 @@
 
 <script>
   import SkillExp from "@/components/skillExp"
-  import {
-    throttle
-  } from "@/assets/js/tool"
   export default {
     components: {
       SkillExp
