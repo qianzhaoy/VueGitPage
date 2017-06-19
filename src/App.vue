@@ -40,7 +40,8 @@
 	}
 	
 	body {
-		background-color: rgb(147, 224, 255)
+		background-color: aliceblue
+/*		background-color: rgb(147, 224, 255)*/
 	}
 	
 	::-webkit-scrollbar {
