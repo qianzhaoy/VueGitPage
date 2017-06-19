@@ -1,6 +1,7 @@
 <template>
 	<el-row id="connection">
    		<el-col :xs="{span:22,offset:1}" :sm="{span:16, offset:4}" class="info">
+  		   
    		  <div class="title">
    		    <h1>Contact Infomation</h1>
    		    <div class="maskleft"></div>
@@ -21,6 +22,7 @@
 					<h2>Github</h2>
 					<div><a href="https://github.com/qianzhaoy">https://github.com/qianzhaoy</a></div>
    		  </div>
+   		  
    		</el-col>
    </el-row>
 </template>
@@ -28,22 +30,25 @@
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+
+			}
 		},
-		components: {}
+
 	}
 
 </script>
 
 <style lang="less" scoped>
 	@lineHight: 1.2rem;
-	@bot: bottom;
 	.mask(@direction: left) {
+		border-top: 1px solid;
+		border-bottom: 1px solid;
 		position: absolute;
 		top: -1px;
 		@{direction}: 0;
+		width: 50%;
 		height: @lineHight;
-		background-color: rgb(147, 224, 255);
 		animation: maskShow 2s ease-out
 	}
 	
@@ -86,8 +91,8 @@
 			line-height: .8rem;
 			border-radius: .1rem;
 			margin-top: .2rem;
-			background-color: rgba(255, 255, 255, 0.65);
 			text-indent: 2em;
+			border: 1px solid;
 		}
 		a {
 			text-decoration: underline;
@@ -96,10 +101,10 @@
 	
 	@keyframes maskShow {
 		0% {
-			width: 50%;
+			width: 0%;
 		}
 		100% {
-			width: 0;
+			width: 50%;
 		}
 	}
 
