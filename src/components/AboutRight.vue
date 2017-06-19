@@ -1,9 +1,10 @@
 <template>
      <div class="myInfo">
-     
-      <div class="portraits">
-         <img src="../assets/images/QQ20170514-151007@2x.png"  alt="帅哥" width="80%">
-      </div>
+     <el-row  class="portraits">
+				<el-col :xs="{span:12, offset:6}">
+					 <img src="../assets/images/QQ20170514-151007@2x.png"  alt="帅哥" width="80%">
+				</el-col>
+			</el-row>
       
       <el-popover
         ref="popover1"
@@ -67,9 +68,6 @@
     .portraits {
       img {
         border-radius: 50%;
-      }
-      &:hover img {
-        animation: headRotate 3s infinite linear;
       }
     }
     #githubLink {
