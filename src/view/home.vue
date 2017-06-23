@@ -57,7 +57,6 @@
 		components: {
 			Banner,
 			Tree,
-			FormOrganization
 		}
 	}
 
