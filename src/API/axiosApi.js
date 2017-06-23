@@ -42,7 +42,8 @@ const Api = {
 export default {
   install (Vue) {
     Vue.prototype.$Api = Api
+    Vue.prototype.$http = Axios
     Vue.Api = Api
   },
-  $http: Api
+  $http: Axios
 }

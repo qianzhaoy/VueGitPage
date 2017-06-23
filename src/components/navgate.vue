@@ -5,7 +5,7 @@
 			<el-menu theme="dark" :default-active="routerPath" class="el-menu-custom" router mode="horizontal">
 				<el-menu-item index="/">首页</el-menu-item>
 				<el-menu-item index="/aboutMe">关于我</el-menu-item>
-				<el-menu-item index="/skill">技能</el-menu-item>
+<!--				<el-menu-item index="/skill">技能</el-menu-item>-->
 				<el-menu-item index="/production">作品</el-menu-item>
 				<el-menu-item index="/connection">联系我</el-menu-item>
 			</el-menu>
@@ -17,7 +17,7 @@
 						<template slot="title">导航</template>
 						<el-menu-item index="/">首页</el-menu-item>
 						<el-menu-item index="/aboutMe">关于我</el-menu-item>
-						<el-menu-item index="/skill">技能</el-menu-item>
+<!--						<el-menu-item index="/skill">技能</el-menu-item>-->
 						<el-menu-item index="/production">作品</el-menu-item>
 						<el-menu-item index="/connection">联系我</el-menu-item>
 					</el-submenu>

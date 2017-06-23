@@ -8,11 +8,11 @@
       <transition-group name="list" tag="div">
 				<el-row class="box-card"  v-for="card in showList" :key="card">
 					<el-card>
-							<div slot="header" class="clearfix">
-									<span style="line-height: 25px;">{{card.title}}</span>
-									<span style="font-size:10px;margin-left:0.2rem;">时间: {{card.time}}</span>
-									<el-button style="float: right;" type="primary">打开全文</el-button>
-							</div>
+							<el-row slot="header" type="flex" class="clearfix">
+									<el-col class="projectTitle">{{card.title}}</el-col>
+									<el-col class="projectTime">{{card.time}}</el-col>
+									<el-col class="projectBtn"><el-button type="primary">打开全文</el-button></el-col>
+							</el-row>
 							<p>{{card.describe}}</p>
 					</el-card>
 				</el-row>
@@ -78,134 +78,146 @@
 			</div>
     </el-col>
   </el-row>
-
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        list: [],
-        pageSize: 4,
-        currPage: 1,
-        searchTitle: "",
-        tag: "all"
-      }
-    },
-    created() {
-      this.init()
-    },
-    methods: {
-      init() {
-        const self = this;
-        self.$Api.getProjectList().then(res => {
-          self.list = res.data;
-        })
-      },
-      pageChange(current) {
-        this.currPage = current;
-      },
-      tagFiltr(tag) {
-        this.tag = tag;
-      },
-      search() {
-        console.log(this.searchTitle)
-      },
-      reset() {
-        this.searchTitle = ""
-      },
-      add() {
-        this.list.splice(2, 1)
-      }
-    },
-    computed: {
-      cloneList() {
-        const self = this;
-        return self.list.filter(li => {
-          //标签检索
-          const tagFilter = self.tag === "all" || li.tags === self.tag,
+	export default {
+		data() {
+			return {
+				list: [],
+				pageSize: 4,
+				currPage: 1,
+				searchTitle: "",
+				tag: "all",
+			}
+		},
+		created() {
+			this.init()
+		},
+		methods: {
+			init() {
+				const self = this;
+				self.$Api.getProjectList().then(res => {
+					self.list = res.data;
+				})
+			},
+			pageChange(current) {
+				this.currPage = current;
+			},
+			tagFiltr(tag) {
+				this.tag = tag;
+			},
+			search() {
+				console.log(this.searchTitle)
+			},
+			reset() {
+				this.searchTitle = ""
+			},
+			add() {
+				this.list.splice(2, 1)
+			}
+		},
+		computed: {
+			cloneList() {
+				const self = this;
+				return self.list.filter(li => {
+					//标签检索
+					const tagFilter = self.tag === "all" || li.tags === self.tag,
 
-            //标题检索
-            reg = new RegExp(self.searchTitle),
-            titleFilter = reg.test(li.title);
+						//标题检索
+						reg = new RegExp(self.searchTitle),
+						titleFilter = reg.test(li.title);
 
-          return tagFilter && titleFilter
-        })
-      },
-      showList() {
-        const vm = this;
-        const prve = (vm.currPage - 1) * vm.pageSize;
-        const next = prve + vm.pageSize;
+					return tagFilter && titleFilter
+				})
+			},
+			showList() {
+				const vm = this;
+				const prve = (vm.currPage - 1) * vm.pageSize;
+				const next = prve + vm.pageSize;
 
-        return vm.cloneList.slice(prve, next);
-      },
-    },
-  }
+				return vm.cloneList.slice(prve, next);
+			},
+		},
+	}
 
 </script>
 
 <style lang="less" scoped>
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 1s;
-  }
-  
-  .list-leave-active,
-  .list-enter {
-    opacity: 0;
-    transform: translateX(-300px);
-  }
-  
-  .list-leave-active {
-    position: absolute;
-  }
-  
-  #production {
-    margin-top: 20px;
-    height: calc(~"100vh - 20px");
-    font-size: .18rem;
-    >.project {
-      min-height: 90%;
-      min-height: calc(~"100% - 80px");
-    }
-  }
-  
-  .content {
-    div.box-card {
-      transition: all 1s;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-size: .26rem;
-      margin-bottom: 5px;
-    }
-  }
-  
-  .filter {
-    overflow: hidden;
-    text-align: left;
-    >div:nth-child(1) {
-      margin-top: 0;
-    }
-    >div {
-      text-align: left;
-      margin: 25px 0 5px 0;
-      h2 {
-        margin-bottom: 3px;
-        color: firebrick;
-      }
-      li {
-        cursor: pointer;
-        margin: 8px 5px;
-      }
-    }
-  }
-  
-  .pages {
-    text-align: center;
-    transition: all 1s;
-    padding-bottom: 20px;
-  }
+	.list-enter-active,
+	.list-leave-active {
+		transition: all 1s;
+	}
+	
+	.list-leave-active,
+	.list-enter {
+		opacity: 0;
+		transform: translateX(-300px);
+	}
+	
+	.list-leave-active {
+		position: absolute;
+	}
+	
+	#production {
+		margin-top: 20px;
+		height: calc(~"100vh - 20px");
+		font-size: .18rem;
+		>.project {
+			min-height: 90%;
+			min-height: calc(~"100% - 80px");
+		}
+	}
+	
+	.content {
+		div.box-card {
+			transition: all 1s;
+			margin-bottom: 20px;
+			line-height: 36px;
+			
+			.projectTitle {
+				text-overflow: ellipsis;
+				overflow: hidden;
+				white-space: nowrap
+			}
+			.projectTime {
+				font-size: 0.14rem;
+			}
+			.projectBtn{
+				text-align: right
+			}
+		}
+		h2 {
+			font-size: .26rem;
+			margin-bottom: 5px;
+		}
+	}
+	
+	.filter {
+		overflow: hidden;
+		text-align: left;
+		>div:nth-child(1) {
+			margin-top: 0;
+		}
+		>div {
+			text-align: left;
+			margin: 25px 0 5px 0;
+			h2 {
+				margin-bottom: 3px;
+				color: firebrick;
+			}
+			li {
+				cursor: pointer;
+				margin: 8px 5px;
+			}
+		}
+	}
+	
+	.pages {
+		text-align: center;
+		transition: all 1s;
+		padding-bottom: 20px;
+	}
 
 </style>

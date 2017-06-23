@@ -1,7 +1,7 @@
 <template>
 	<el-row id="connection">
+  		
    		<el-col :xs="{span:22,offset:1}" :sm="{span:16, offset:4}" class="info">
-  		   
    		  <div class="title">
    		    <h1>Contact Infomation</h1>
    		    <div class="maskleft"></div>
@@ -14,7 +14,7 @@
    		  </div>
    		  
    		  <div class="connect">
-					<h2>邮箱</h2>
+					<h2>E-Mail</h2>
 					<div>779547508@qq.com</div>
    		  </div>
    		  
@@ -24,6 +24,8 @@
    		  </div>
    		  
    		</el-col>
+   		
+   		
    </el-row>
 </template>
 
@@ -31,10 +33,20 @@
 	export default {
 		data() {
 			return {
-
 			}
 		},
-
+		methods: {
+			deepAssign(base, dataArr) {
+				dataArr.forEach((obj, ind) => {
+					if (base[ind].children.length === 0 && obj.children.length > 0) {
+						base[ind].children = obj.children
+						return false
+					} else {
+						deepAssign(base[ind].children, obj.children)
+					}
+				})
+			},
+		}
 	}
 
 </script>

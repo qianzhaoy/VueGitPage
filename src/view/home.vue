@@ -5,6 +5,7 @@
     <el-row class="wrap">
        <el-col :xs="{span:22,offset:1}" :sm="{span:20,offset:2}" class="left">
         <div class="left">
+         
 					<transition enter-active-class="animated zoomIn">
 						<h2 v-if="show">技术栈</h2>
 					</transition>
@@ -25,9 +26,7 @@
 								<p> 试了一下饿了么的 element-ui 组件库. 做一半又想要响应式, 但是 element-ui 以PC端为主,修改比较麻烦, 但是还是硬着头皮做下去了.然后用animate.css做了小部分动画. 也有用Vue的方式写了看起来挺蠢萌的动画...</p>
 							</div>
 							
-						<transition name="fadeIn" enter-active-class="animated zoomIn">
-							<h2 v-if="show">目录结构<br></h2>
-						</transition>
+							<h2>目录结构<br></h2>
 					<div class="content">
 						<Tree class="showContent"></Tree>
 					</div>
@@ -40,10 +39,11 @@
 <script>
 	import Banner from '@/components/banner'
 	import Tree from '@/components/tree'
+
 	export default {
 		data() {
 			return {
-				show: false
+				show: false,
 			}
 		},
 		mounted() {
@@ -57,6 +57,7 @@
 		components: {
 			Banner,
 			Tree,
+			FormOrganization
 		}
 	}
 
@@ -86,8 +87,6 @@
 			display: block;
 			border-bottom: 1px solid;
 		}
-		
-		
 		.showContent,
 		p {
 			text-indent: 2em;
@@ -105,19 +104,6 @@
 			a {
 				color: #fff;
 			}
-		}
-	}
-	
-	.content {
-		animation: late 1s ease-out;
-	}
-	
-	@keyframes late {
-		from {
-			transform: translate(-1200px, 0)
-		}
-		to {
-			transform: translate(0, 0)
 		}
 	}
 

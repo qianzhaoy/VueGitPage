@@ -9,7 +9,8 @@ import Api from './API/axiosApi'
 import { Loading } from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import "./assets/css/reset.css"
-//自适应的css在这
+
+//自适应的css
 import "./assets/css/respond.less" 
 import "animate.css";
 
