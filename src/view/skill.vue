@@ -77,13 +77,18 @@
     }
   }
   
-  .trackRotate(@X, @Y, @animateName) {
+  .trackRotate(@X, @Y, @animateName, @delay:1) {
     transform: rotateX(@X) rotateY(@Y);
     transform-style: preserve-3d;
     div.exp {
       left: 30px;
       animation: @animateName 7s infinite linear;
+			animation-delay: @delay
     }
+		div.rotateZ{
+			animation-delay: @delay
+		}
+		
   }
   
   #skill {
@@ -135,26 +140,27 @@
   }
   
   .css3 {
-    .trackRotate(70deg, 60deg, cssFixed);
+    .trackRotate(70deg, 60deg, cssFixed, .5s);
   }
   
   .html5 {
-    .trackRotate(70deg, -60deg, htmlFixed);
+    .trackRotate(70deg, -60deg, htmlFixed, 1.5s);
   }
   
   .vue {
-    .trackRotate(70deg, 0, vueFixed);
+    .trackRotate(70deg, 0, vueFixed, 2.5s);
   }
   
   .jquery {
-    .trackRotate(70deg, -30deg, jqueryFixed);
+    .trackRotate(70deg, -30deg, jqueryFixed, 3.5s);
   }
   
   .swift {
-    .trackRotate(70deg, 30deg, swiftFixed);
+    .trackRotate(70deg, 30deg, swiftFixed, 4.5s);
   }
   
   .nodeJs {
+		animation-delay: 2.8s;
     .trackRotate(0, -91deg, nodeFixed);
   }
   
