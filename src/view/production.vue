@@ -11,7 +11,7 @@
 							<el-row slot="header" type="flex" class="clearfix">
 									<el-col class="projectTitle">{{card.title}}</el-col>
 									<el-col class="projectTime">{{card.time}}</el-col>
-									<el-col class="projectBtn"><el-button type="primary">打开全文</el-button></el-col>
+									<el-col class="projectBtn"><el-button type="primary" @click="showProject(card.link)">打开链接</el-button></el-col>
 							</el-row>
 							<p>{{card.describe}}</p>
 					</el-card>
@@ -116,6 +116,9 @@
 			},
 			add() {
 				this.list.splice(2, 1)
+			},
+			showProject(link){
+				window.open(link)
 			}
 		},
 		computed: {
